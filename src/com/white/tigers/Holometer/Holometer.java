@@ -148,8 +148,8 @@ public class Holometer extends Activity implements RetrieveWeatherDataCallback, 
         ImageView topWeather = (ImageView) findViewById(R.id.topWeather);
         ImageView bottomWeather = (ImageView) findViewById(R.id.bottomWeather);
 
-        topWeather.setImageBitmap(decodeResource(getResources(), weatherIcons.get(String.valueOf(weather.getCondition()))));
-        bottomWeather.setImageBitmap(decodeResource(getResources(), speedLimits.get(String.valueOf(weather.getCondition())));
+        topWeather.setImageBitmap(decodeResource(getResources(), weatherIcons.get(Integer.valueOf(weather.getCondition()))));
+        bottomWeather.setImageBitmap(decodeResource(getResources(), speedLimits.get(Integer.valueOf(weather.getCondition()))));
 
     }
 
