@@ -5,7 +5,6 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.util.Log;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,8 +13,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 /**
  * Created by jamesflesher on 8/29/15.
@@ -25,8 +26,24 @@ public class WeatherService {
     private static String IMG_URL = "http://openweathermap.org/img/w/";
     private Context context;
 
+    List<String> conditionList = new ArrayList<>();
+
     public WeatherService(Context context) {
         this.context = context;
+
+        buildConditionList();
+    }
+
+    private void buildConditionList()
+    {
+        conditionList.add("1");
+        conditionList.add("2");
+        conditionList.add("3");
+        conditionList.add("4");
+        conditionList.add("5");
+        conditionList.add("6");
+        conditionList.add("7");
+        conditionList.add("8");
     }
 
     public String getWeatherData(Location location) {
@@ -113,12 +130,19 @@ public class WeatherService {
         {
             JSONObject jsonWeatherObject = new JSONObject((String) weatherData);
 
-            JSONArray weatherObjs = jsonWeatherObject.getJSONArray("weather");
+            /*
+             * Randomizing for demo purposes
+             */
+//            JSONArray weatherObjs = jsonWeatherObject.getJSONArray("weather");
+//
+//            if(weatherObjs.length() > 0)
+//            {
+//                weather.setCondition(getString("main", (JSONObject) weatherObjs.get(0)));
+//            }
 
-            if(weatherObjs.length() > 0)
-            {
-                weather.setCondition(getString("main", (JSONObject) weatherObjs.get(0)));
-            }
+            Random random = new Random();
+            int conditionIndex =  random.nextInt(conditionList.size());
+            weather.setCondition(conditionList.get(conditionIndex));
 
             JSONObject mainObj = getObject("main", jsonWeatherObject);
 

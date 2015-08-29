@@ -58,6 +58,8 @@
                         android:textSize="16pt"
                         android:rotationX="180"
                         android:layout_gravity="center"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
                         android:id="@+id/headingFront"/>
 
                 <TextView
@@ -67,6 +69,8 @@
                         android:text=""
                         android:textSize="16pt"
                         android:layout_gravity="center"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
                         android:id="@+id/tempFront"
                         />
             </LinearLayout>
@@ -109,12 +113,14 @@
 
                 <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:paddingBottom="2sp"
                         android:textSize="16pt"
                         android:rotationX="180"
                         android:layout_gravity="center"
-                        android:id="@+id/headingBack"/>
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:id="@+id/headingBack" android:layout_weight="1"/>
 
                 <TextView
                         android:layout_width="wrap_content"
@@ -124,6 +130,8 @@
                         android:textSize="16pt"
                         android:rotationX="180"
                         android:layout_gravity="center"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
                         android:id="@+id/tempBack"/>
 
                 <ImageView
@@ -141,6 +149,7 @@
         </LinearLayout>
 
     </LinearLayout>
+    <SurfaceView android:layout_width="100sp" android:layout_height="100sp" android:id="@+id/camera"/>
 
 </FrameLayout>
 
