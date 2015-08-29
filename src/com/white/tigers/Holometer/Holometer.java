@@ -5,6 +5,8 @@ import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -87,9 +89,18 @@ public class Holometer extends Activity {
 
     private void updateLocation(Location location)
     {
-        currentWeather = weatherService.getWeather(location);
-        Log.i("tag", currentWeather.getDescription());
-        TextView test = (TextView)findViewById(R.id.test);
-        test.setText(currentWeather.getDescription());
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if(networkInfo != null && networkInfo.isConnected()) {
+            currentWeather = weatherService.getWeather(location);
+            Log.i("tag", currentWeather.getDescription());
+            TextView test = (TextView) findViewById(R.id.test);
+            test.setText(currentWeather.getDescription());
+        }
+        else
+        {
+            Log.i("tag", "NOT CONNECTED");
+        }
     }
 }
