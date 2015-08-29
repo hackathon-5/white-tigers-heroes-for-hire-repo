@@ -80,15 +80,19 @@
                         android:text="@string/Speed"
                         android:gravity="right"
                         android:textSize="40sp"
-                        android:textColor="#ffffff"/>
+                        android:textColor="#ffffff"
+                        android:id="@+id/test"/>
 
-                <TextView
-                        android:layout_width="100sp"
+                <ImageView
+                        android:layout_width="80sp"
                         android:layout_height="wrap_content"
-                        android:text="@string/Unit"
+                        android:text="@string/Speed"
                         android:gravity="right"
-                        android:textSize="12sp"
-                        android:textColor="#ffffff"/>
+                        android:textSize="40sp"
+                        android:src="@drawable/fast25"
+                        android:textColor="#ffffff"
+                        android:id="@+id/topSpeedLimit"
+                        />
 
             </LinearLayout>
 
@@ -136,20 +140,23 @@
                 <TextView
                         android:layout_width="100sp"
                         android:layout_height="wrap_content"
-                        android:text="@string/Speed"
-                        android:gravity="right"
-                        android:textSize="40sp"
-                        android:textColor="#ffffff"
-                        android:rotationX="180"/>
-
-                <TextView
-                        android:layout_width="100sp"
-                        android:layout_height="wrap_content"
                         android:text="@string/Unit"
                         android:gravity="right"
                         android:textSize="12sp"
                         android:textColor="#ffffff"
                         android:rotationX="180"/>
+
+                <ImageView
+                        android:layout_width="80sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Speed"
+                        android:gravity="right"
+                        android:textSize="40sp"
+                        android:textColor="#ffffff"
+                        android:rotationX="180"
+                        android:id="@+id/bottomSpeedLimit"
+                        />
+
 
             </LinearLayout>
 

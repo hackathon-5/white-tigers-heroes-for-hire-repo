@@ -1,0 +1,521 @@
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules.xml	(revision 328d460198d5ca8f26daf2153a036aa13c81cafd)
++++ .idea/modules.xml	(revision )
+@@ -5,4 +5,5 @@
+       <module fileurl="file://$PROJECT_DIR$/white-tigers-heroes-for-hire-repo.iml" filepath="$PROJECT_DIR$/white-tigers-heroes-for-hire-repo.iml" />
+     </modules>
+   </component>
+-</project>
+\ No newline at end of file
++</project>
++
+Index: src/com/white/tigers/Holometer/Weather.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/white/tigers/Holometer/Weather.java	(revision )
++++ src/com/white/tigers/Holometer/Weather.java	(revision )
+@@ -0,0 +1,39 @@
++package com.white.tigers.Holometer;
++
++/**
++ * Created by jamesflesher on 8/29/15.
++ */
++public class Weather
++{
++    private String description;
++    private float temp;
++    private float humidity;
++    private float pressure;
++    private float minTemp;
++    private float maxTemp;
++    private byte[] image;
++
++    public String getDescription() { return description; }
++    public void setDescription(String description) { this.description = description; }
++
++    public float getTemp() { return temp; }
++    public void setTemp(float temp) { this.temp = temp; }
++
++    public float getHumidity() { return humidity; }
++    public void setHumidity(float humidity) { this.humidity = humidity; }
++
++    public float getPressure() { return pressure; }
++    public void setPressure(float pressure) { this.pressure = pressure; }
++
++    public float getMinTemp() { return minTemp; }
++    public void setMinTemp(float minTemp) { this.minTemp = minTemp; }
++
++    public float getMaxTemp() { return maxTemp; }
++    public void setMaxTemp(float maxTemp) { this.maxTemp = maxTemp; }
++
++    public byte[] getImage() { return image; }
++    public void setImage(byte[] image) { this.image = image; }
++
++    public Weather()
++    {}
++}
+\ No newline at end of file
+Index: .idea/scopes/scope_settings.xml
+===================================================================
+--- .idea/scopes/scope_settings.xml	(revision )
++++ .idea/scopes/scope_settings.xml	(revision )
+@@ -0,0 +1,5 @@
++<component name="DependencyValidationManager">
++  <state>
++    <option name="SKIP_IMPORT_STATEMENTS" value="false" />
++  </state>
++</component>
+\ No newline at end of file
+Index: src/com/white/tigers/Holometer/Holometer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/white/tigers/Holometer/Holometer.java	(revision 328d460198d5ca8f26daf2153a036aa13c81cafd)
++++ src/com/white/tigers/Holometer/Holometer.java	(revision )
+@@ -1,15 +1,51 @@
+ package com.white.tigers.Holometer;
+ 
+ import android.app.Activity;
++import android.location.Location;
+ import android.os.Bundle;
+ 
+ public class Holometer extends Activity {
+     /**
+      * Called when the activity is first created.
+      */
++//    LocationManager locationManager;
++//    LocationListener locationListener;
++
+     @Override
+-    public void onCreate(Bundle savedInstanceState) {
++    public void onCreate(Bundle savedInstanceState)
++    {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.main);
++
++//        locationManager = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
++//        locationListener = new LocationListener()
++//        {
++//            @Override
++//            public void onLocationChanged(Location location) {
++//                updateLocation(location);
++//            }
++//
++//            @Override
++//            public void onStatusChanged(String provider, int status, Bundle extras) {
++//
++//            }
++//
++//            @Override
++//            public void onProviderEnabled(String provider) {
++//
++//            }
++//
++//            @Override
++//            public void onProviderDisabled(String provider) {
++//
++//            }
++//        };
+     }
++
++    private void updateLocation(Location location)
++    {
++//        String city = getCity(location);
++    }
++
++
+-}
++}
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/compiler.xml	(revision 328d460198d5ca8f26daf2153a036aa13c81cafd)
++++ .idea/compiler.xml	(revision )
+@@ -19,4 +19,5 @@
+       </profile>
+     </annotationProcessing>
+   </component>
+-</project>
+\ No newline at end of file
++</project>
++
+Index: src/com/white/tigers/Holometer/MirroredTextView.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/white/tigers/Holometer/MirroredTextView.java	(revision 328d460198d5ca8f26daf2153a036aa13c81cafd)
++++ src/com/white/tigers/Holometer/MirroredTextView.java	(revision 328d460198d5ca8f26daf2153a036aa13c81cafd)
+@@ -1,25 +0,0 @@
+-package com.white.tigers.Holometer;
+-
+-import android.content.Context;
+-import android.graphics.Canvas;
+-import android.util.AttributeSet;
+-import android.widget.TextView;
+-
+-/**
+- * Created by jamesflesher on 8/29/15.
+- */
+-public class MirroredTextView extends TextView
+-{
+-    public MirroredTextView(Context context, AttributeSet attributeSet)
+-    {
+-        super(context, attributeSet);
+-    }
+-
+-    @Override
+-    protected void onDraw(Canvas canvas)
+-    {
+-        canvas.translate(getWidth(), 0);
+-        canvas.scale(-1, 1);
+-        super.onDraw(canvas);
+-    }
+-}
+\ No newline at end of file
+Index: res/anim/translate.xml
+===================================================================
+--- res/anim/translate.xml	(revision )
++++ res/anim/translate.xml	(revision )
+@@ -0,0 +1,19 @@
++<set xmlns:android="http://schemas.android.com/apk/res/android"
++     android:fillEnabled="true"
++     android:fillAfter="true" >
++
++    <translate
++            android:interpolator="@android:anim/linear_interpolator"
++            android:fromYDelta="0%p"
++            android:toYDelta="10%p"
++            android:duration="2000"
++            android:startOffset="0" />
++
++    <translate
++            android:interpolator="@android:anim/linear_interpolator"
++            android:fromYDelta="10%p"
++            android:toYDelta="-10%p"
++            android:duration="2000"
++            android:startOffset="2000" />
++
++</set>
+\ No newline at end of file
+Index: white-tigers-heroes-for-hire-repo.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- white-tigers-heroes-for-hire-repo.iml	(revision 328d460198d5ca8f26daf2153a036aa13c81cafd)
++++ white-tigers-heroes-for-hire-repo.iml	(revision )
+@@ -16,4 +16,5 @@
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
+-</module>
+\ No newline at end of file
++</module>
++
+Index: AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- AndroidManifest.xml	(revision 328d460198d5ca8f26daf2153a036aa13c81cafd)
++++ AndroidManifest.xml	(revision )
+@@ -4,6 +4,8 @@
+           android:versionCode="1"
+           android:versionName="1.0">
+     <uses-sdk android:minSdkVersion="21"/>
++    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
++
+     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
+         <activity android:name="Holometer"
+                   android:label="@string/app_name">
+Index: src/com/white/tigers/Holometer/VerticalTextView.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/white/tigers/Holometer/VerticalTextView.java	(revision )
++++ src/com/white/tigers/Holometer/VerticalTextView.java	(revision )
+@@ -0,0 +1,55 @@
++package com.white.tigers.Holometer;
++
++import android.content.Context;
++import android.graphics.Canvas;
++import android.text.TextPaint;
++import android.util.AttributeSet;
++import android.view.Gravity;
++import android.widget.TextView;
++
++/**
++ * Created by jamesflesher on 8/29/15.
++ */
++public class VerticalTextView extends TextView
++{
++    final boolean topDown;
++
++    public VerticalTextView(Context context, AttributeSet attrs){
++        super(context, attrs);
++        final int gravity = getGravity();
++        if(Gravity.isVertical(gravity) && (gravity&Gravity.VERTICAL_GRAVITY_MASK) == Gravity.BOTTOM) {
++            setGravity((gravity&Gravity.HORIZONTAL_GRAVITY_MASK) | Gravity.TOP);
++            topDown = false;
++        }else
++            topDown = true;
++    }
++
++    @Override
++    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
++        super.onMeasure(heightMeasureSpec, widthMeasureSpec);
++        setMeasuredDimension(getMeasuredHeight(), getMeasuredWidth());
++    }
++
++    @Override
++    protected void onDraw(Canvas canvas){
++        TextPaint textPaint = getPaint();
++        textPaint.setColor(getCurrentTextColor());
++        textPaint.drawableState = getDrawableState();
++
++        canvas.save();
++
++        if(topDown){
++            canvas.translate(getWidth(), 0);
++            canvas.rotate(90);
++        }else {
++            canvas.translate(0, getHeight());
++            canvas.rotate(-90);
++        }
++
++
++        canvas.translate(getCompoundPaddingLeft(), getExtendedPaddingTop());
++
++        getLayout().draw(canvas);
++        canvas.restore();
++    }
++}
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/encodings.xml	(revision )
++++ .idea/encodings.xml	(revision )
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
++</project>
++
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision 328d460198d5ca8f26daf2153a036aa13c81cafd)
++++ .idea/misc.xml	(revision )
+@@ -29,10 +29,11 @@
+     <ConfirmationsSetting value="0" id="Add" />
+     <ConfirmationsSetting value="0" id="Remove" />
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" assert-keyword="true" jdk-15="true" project-jdk-name="Android API 21 Platform" project-jdk-type="Android SDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" assert-keyword="true" jdk-15="true" project-jdk-name="Android API 21 Platform" project-jdk-type="Android SDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+   <component name="ProjectType">
+     <option name="id" value="Android" />
+   </component>
+-</project>
+\ No newline at end of file
++</project>
++
+Index: src/com/white/tigers/Holometer/WeatherService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/white/tigers/Holometer/WeatherService.java	(revision )
++++ src/com/white/tigers/Holometer/WeatherService.java	(revision )
+@@ -0,0 +1,159 @@
++package com.white.tigers.Holometer;
++
++import android.content.Context;
++import android.location.Address;
++import android.location.Geocoder;
++import android.location.Location;
++import org.json.JSONException;
++import org.json.JSONObject;
++
++import java.io.BufferedReader;
++import java.io.InputStream;
++import java.io.InputStreamReader;
++import java.net.HttpURLConnection;
++import java.net.URL;
++import java.util.List;
++import java.util.Locale;
++
++/**
++ * Created by jamesflesher on 8/29/15.
++ */
++public class WeatherService
++{
++    private Context context;
++    private static final String SERVICE_URL = "http://api.openweathermap.org/data/2.5/weather?q=%s";
++    private static String IMG_URL = "http://openweathermap.org/img/w/";
++
++    public WeatherService(Context context)
++    {
++        this.context = context;
++    }
++
++    public Weather getWeather(Location location)
++    {
++        Weather weather = new Weather();
++
++        String weatherData = getWeatherData(location);
++        if(weatherData != null)
++        {
++            try
++            {
++                JSONObject jsonWeatherObject = new JSONObject(weatherData);
++
++                JSONObject weatherObj = getObject("weather", jsonWeatherObject);
++                weather.setDescription(getString("main", weatherObj));
++
++                JSONObject mainObj = getObject("main", jsonWeatherObject);
++
++                weather.setTemp(getFloat("temp", mainObj));
++                weather.setHumidity(getFloat("humidity", mainObj));
++                weather.setPressure(getFloat("pressure", mainObj));
++                weather.setMinTemp(getFloat("temp_min", mainObj));
++                weather.setMaxTemp(getFloat("temp_max", mainObj));
++
++            }
++            catch(JSONException je)
++            {
++
++            }
++
++        }
++
++        return weather;
++    }
++
++    private JSONObject getObject(String tagName, JSONObject jsonObject) throws JSONException
++    {
++        return jsonObject.getJSONObject(tagName);
++    }
++
++    private float getFloat(String tagName, JSONObject jsonObject) throws JSONException
++    {
++        return (float)jsonObject.getDouble(tagName);
++    }
++
++    private String getString(String tagName, JSONObject jsonObject) throws JSONException
++    {
++        return jsonObject.getString(tagName);
++    }
++
++    private int getInt(String tagName, JSONObject jsonObject) throws JSONException
++    {
++        return jsonObject.getInt(tagName);
++    }
++
++    private String getWeatherData(Location location)
++    {
++        String weatherData = null;
++        HttpURLConnection connection = null;
++        InputStream is = null;
++
++        try
++        {
++            String cityAndCountry = this.getCityAndCountry(location);
++            connection = (HttpURLConnection)(new URL(String.format(SERVICE_URL, cityAndCountry))).openConnection();
++            connection.setRequestMethod("GET");
++            connection.setDoInput(true);
++            connection.setDoOutput(true);
++
++            StringBuffer buffer = new StringBuffer();
++            is = connection.getInputStream();
++            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
++            String line = null;
++
++            while((line = reader.readLine()) != null)
++            {
++                buffer.append(line + "\r\n");
++            }
++
++            weatherData =  buffer.toString();
++        }
++        catch(Exception ex)
++        {
++            /*
++             * DO NOTHING
++             */
++        }
++        finally
++        {
++            try
++            {
++                is.close();
++                connection.disconnect();
++            }
++            catch(Throwable t)
++            {
++                /*
++                 * DO NOTHING
++                 */
++            }
++        }
++
++        return weatherData;
++    }
++    private String getCityAndCountry(Location location)
++    {
++        String cityAndCountry = "";
++
++        try {
++            Geocoder geocoder = new Geocoder(context, Locale.getDefault());
++            List<Address> addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
++            if (addressList.size() > 0) {
++                cityAndCountry = addressList.get(0).getLocality() + addressList.get(0).getCountryCode();
++            }
++        }
++        catch(Exception ex)
++        {
++            /*
++             * DO NOTHING
++             */
++        }
++
++        return cityAndCountry;
++    }
++
++//    public byte[] getImage(String code)
++//    {
++//
++//    }
++}
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(revision 328d460198d5ca8f26daf2153a036aa13c81cafd)
++++ .idea/vcs.xml	(revision )
+@@ -3,4 +3,5 @@
+   <component name="VcsDirectoryMappings">
+     <mapping directory="" vcs="Git" />
+   </component>
+-</project>
+\ No newline at end of file
++</project>
++
