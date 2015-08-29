@@ -1,60 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
-    <!-- Relative layout -->
 
-    <RelativeLayout
+    <LinearLayout
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:background="#ffffff"
-            >
+            android:weightSum="2"
+            android:orientation="horizontal">
 
-        <TextView android:layout_width="fill_parent"
-                  android:layout_height="fill_parent"
-                  android:gravity="center"
-                  android:text="Hello World, \nHolometer"
-                  android:textSize="80px"
-                  android:id="@+id/text1"
-                  android:textColor="#000000"
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:text="l\nl"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:layout_weight="1"
+                android:rotation="270"
+                android:rotationX="180"
                 />
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:text="l\nl"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:layout_weight="1"
+                android:rotation="90"
+                />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="2"
+            android:orientation="vertical">
 
         <!--<ImageView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--&lt;!&ndash;android:src="@drawable/your_image"&ndash;&gt;-->
-                <!--android:adjustViewBounds="true"-->
-                <!--/>-->
-    </RelativeLayout>
+        <!--android:layout_width="64dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:src="@drawable/rain"-->
+        <!--android:adjustViewBounds="true"-->
+        <!--android:layout_weight="1"-->
+        <!--android:id="@+id/topWeather"-->
+        <!--android:layout_gravity="center_vertical|center_horizontal"-->
+        <!--/>-->
 
-    <View
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0"
-            android:background="#ffffff"
-            />
+    </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:background="#ffffff"
-        >
+    <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:weightSum="2"
+            android:orientation="vertical">
 
-        <TextView android:layout_width="fill_parent"
-                  android:layout_height="fill_parent"
-                  android:gravity="center"
-                  android:rotationX="180"
-                  android:text="Hello World, \nHolometer"
-                  android:textSize="80px"
-                  android:id="@+id/text1"
-                  android:textColor="#000000"
-                />
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
+            <LinearLayout
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="75sp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
 
-    </RelativeLayout>
-</LinearLayout>
+                <TextView
+                        android:layout_width="100sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Speed"
+                        android:gravity="right"
+                        android:textSize="40sp"
+                        android:textColor="#ffffff"/>
+
+                <TextView
+                        android:layout_width="100sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Unit"
+                        android:gravity="right"
+                        android:textSize="12sp"
+                        android:textColor="#ffffff"/>
+
+            </LinearLayout>
+
+            <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:paddingLeft="20sp"
+                    android:src="@drawable/rain"
+                    android:adjustViewBounds="true"
+                    android:id="@+id/topWeather"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/weather_description"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+            <LinearLayout
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="75sp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="100sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Speed"
+                        android:gravity="right"
+                        android:textSize="40sp"
+                        android:textColor="#ffffff"
+                        android:rotationX="180"/>
+
+                <TextView
+                        android:layout_width="100sp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Unit"
+                        android:gravity="right"
+                        android:textSize="12sp"
+                        android:textColor="#ffffff"
+                        android:rotationX="180"/>
+
+            </LinearLayout>
+
+            <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:paddingLeft="20sp"
+                    android:src="@drawable/rain"
+                    android:adjustViewBounds="true"
+                    android:id="@+id/bottomWeather"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/weather_description"
+                    android:rotationX="180"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
 

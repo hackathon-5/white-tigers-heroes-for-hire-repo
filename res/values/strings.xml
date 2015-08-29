@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Holometer</string>
+    <string name="Left_Side">New Stuff</string>
+    <string name="Front">30\nMPH</string>
+    <string name="Speed">30</string>
+    <string name="Unit">MPH</string>
+    <string name="weather_description">weather icon</string>
 </resources>
