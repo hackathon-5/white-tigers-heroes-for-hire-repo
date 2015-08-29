@@ -92,16 +92,29 @@
 
             </LinearLayout>
 
-            <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:paddingLeft="20sp"
-                    android:src="@drawable/rain_white"
-                    android:adjustViewBounds="true"
-                    android:id="@+id/topWeather"
+            <LinearLayout
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
                     android:layout_gravity="bottom"
                     android:layout_marginBottom="50sp"
-                    android:contentDescription="@string/weather_description"/>
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/rain_white"
+                        android:adjustViewBounds="true"
+                        android:id="@+id/topWeather"
+                        android:layout_gravity="bottom|center"
+                        android:contentDescription="@string/weather_description"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Julian"
+                        android:layout_gravity="center"/>
+            </LinearLayout>
 
         </LinearLayout>
 
