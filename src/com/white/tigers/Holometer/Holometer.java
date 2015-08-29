@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -18,9 +16,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -35,6 +30,7 @@ public class Holometer extends Activity implements RetrieveWeatherDataCallback, 
     private LocationListener locationListener;
     private Weather currentWeather;
     private List<Integer> speedLimits = new ArrayList<>();
+    private List<Integer> weatherIcons = new ArrayList<>();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,10 +41,20 @@ public class Holometer extends Activity implements RetrieveWeatherDataCallback, 
         speedLimits.add(R.drawable.fast65);
         speedLimits.add(R.drawable.fast80);
 
+        // Set weather icon list.
+        weatherIcons.add(R.drawable.w1);
+        weatherIcons.add(R.drawable.w2);
+        weatherIcons.add(R.drawable.w3);
+        weatherIcons.add(R.drawable.w4);
+        weatherIcons.add(R.drawable.w5);
+        weatherIcons.add(R.drawable.w6);
+        weatherIcons.add(R.drawable.w7);
+        weatherIcons.add(R.drawable.w8);
+
         weatherService = new WeatherService(getApplicationContext());
 
         // Set Weather
-        setWeather(R.drawable.rain_white);
+        setWeather(R.drawable.w1);
 
         setSpeedLimit(R.drawable.fast65);
 
@@ -137,6 +143,14 @@ public class Holometer extends Activity implements RetrieveWeatherDataCallback, 
 
         tempFront.setText(String.valueOf(convertKelvinToFarenheit(currentWeather.getTemp())));
         tempBack.setText(String.valueOf(convertKelvinToFarenheit(currentWeather.getTemp())));
+
+        // Update weather icon.
+        ImageView topWeather = (ImageView) findViewById(R.id.topWeather);
+        ImageView bottomWeather = (ImageView) findViewById(R.id.bottomWeather);
+
+        topWeather.setImageBitmap(decodeResource(getResources(), weatherIcons.get(String.valueOf(weather.getCondition()))));
+        bottomWeather.setImageBitmap(decodeResource(getResources(), speedLimits.get(String.valueOf(weather.getCondition())));
+
     }
 
     @Override
@@ -146,8 +160,6 @@ public class Holometer extends Activity implements RetrieveWeatherDataCallback, 
 
         // Randomize speed limit
         Random random;
-
-
         try {
             random = new Random();
             int randomSpeedSign = random.nextInt(speedLimits.size());
