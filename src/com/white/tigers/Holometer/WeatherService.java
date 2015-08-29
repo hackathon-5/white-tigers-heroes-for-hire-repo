@@ -5,6 +5,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.util.Log;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -112,12 +113,12 @@ public class WeatherService {
         {
             JSONObject jsonWeatherObject = new JSONObject((String) weatherData);
 
-//            JSONArray weatherObjs = (JSONArray)getObject("weather", jsonWeatherObject);
-//
-//            if(weatherObjs.length() > 0)
-//            {
-//                weather.setDescription(getString("description", (JSONObject)weatherObjs.get(0)));
-//            }
+            JSONArray weatherObjs = jsonWeatherObject.getJSONArray("weather");
+
+            if(weatherObjs.length() > 0)
+            {
+                weather.setCondition(getString("main", (JSONObject) weatherObjs.get(0)));
+            }
 
             JSONObject mainObj = getObject("main", jsonWeatherObject);
 

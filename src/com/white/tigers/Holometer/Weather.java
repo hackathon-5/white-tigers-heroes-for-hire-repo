@@ -5,7 +5,7 @@ package com.white.tigers.Holometer;
  */
 public class Weather
 {
-    private String description;
+    private String condition;
     private float temp;
     private float humidity;
     private float pressure;
@@ -13,8 +13,8 @@ public class Weather
     private float maxTemp;
     private byte[] image;
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public String getCondition() { return condition; }
+    public void setCondition(String condition) { this.condition = condition; }
 
     public float getTemp() { return temp; }
     public void setTemp(float temp) { this.temp = temp; }
