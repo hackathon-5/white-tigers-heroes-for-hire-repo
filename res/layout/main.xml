@@ -70,7 +70,8 @@
                     android:layout_width="100sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="75sp"
-                    android:layout_gravity="center"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="50sp"
                     android:orientation="vertical">
 
                 <TextView
@@ -95,10 +96,11 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:paddingLeft="20sp"
-                    android:src="@drawable/rain"
+                    android:src="@drawable/rain_white"
                     android:adjustViewBounds="true"
                     android:id="@+id/topWeather"
-                    android:layout_gravity="center"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="50sp"
                     android:contentDescription="@string/weather_description"/>
 
         </LinearLayout>
@@ -114,7 +116,8 @@
                     android:layout_width="100sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="75sp"
-                    android:layout_gravity="center"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="50sp"
                     android:orientation="vertical">
 
                 <TextView
@@ -141,10 +144,11 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:paddingLeft="20sp"
-                    android:src="@drawable/rain"
+                    android:src="@drawable/rain_white"
                     android:adjustViewBounds="true"
                     android:id="@+id/bottomWeather"
-                    android:layout_gravity="center"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="50sp"
                     android:contentDescription="@string/weather_description"
                     android:rotationX="180"/>
 
