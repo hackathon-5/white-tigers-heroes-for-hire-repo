@@ -18,10 +18,10 @@ public class Holometer extends Activity implements RetrieveWeatherDataCallback {
      * Called when the activity is first created.
      */
 
-    WeatherService weatherService;
-    LocationManager locationManager;
-    LocationListener locationListener;
-    Weather currentWeather;
+    private WeatherService weatherService;
+    private LocationManager locationManager;
+    private LocationListener locationListener;
+    private Weather currentWeather;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +98,12 @@ public class Holometer extends Activity implements RetrieveWeatherDataCallback {
         if(networkInfo != null && networkInfo.isConnected())
         {
             new RetrieveWeatherDataTask(this, getApplicationContext()).execute(location);
+
+            TextView headingFront = (TextView)findViewById(R.id.headingFront);
+            TextView headingBack = (TextView)findViewById(R.id.headingBack);
+
+            headingFront.setText(getDirection(location.getBearing()));
+            headingBack.setText(getDirection(location.getBearing()));
         }
         else
         {
@@ -118,5 +124,22 @@ public class Holometer extends Activity implements RetrieveWeatherDataCallback {
     private int convertKelvinToFarenheit(float kelvin)
     {
         return Math.round((((kelvin - 273.15f) * 1.8f) + 32));
+    }
+
+    private String getDirection(float bearing)
+    {
+        String direction = "N";
+
+        if(bearing>=0 && bearing>22.5) direction="N";
+        else if(bearing>=22.5 && bearing>67.5) direction="NE";
+        else if(bearing>=67.5 && bearing>112.5) direction="E";
+        else if(bearing>=112.5 && bearing>157.5) direction="SE";
+        else if(bearing>=157.5 && bearing>202.5) direction="S";
+        else if(bearing>=202.5 && bearing>247.5) direction="SW";
+        else if(bearing>=247.5 && bearing>292.5) direction="W";
+        else if(bearing>=292.5 && bearing>337.5) direction="NW";
+        else direction="N";
+
+        return direction;
     }
 }
