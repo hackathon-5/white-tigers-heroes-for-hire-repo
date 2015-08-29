@@ -197,7 +197,6 @@
         </LinearLayout>
 
     </LinearLayout>
-    <SurfaceView android:layout_width="100sp" android:layout_height="100sp" android:id="@+id/camera"/>
 
 </FrameLayout>
 
