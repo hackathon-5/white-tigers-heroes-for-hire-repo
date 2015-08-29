@@ -36,14 +36,14 @@ public class WeatherService {
 
     private void buildConditionList()
     {
-        conditionList.add("w1");
-        conditionList.add("w2");
-        conditionList.add("w3");
-        conditionList.add("w4");
-        conditionList.add("w5");
-        conditionList.add("w6");
-        conditionList.add("w7");
-        conditionList.add("w8");
+        conditionList.add("1");
+        conditionList.add("2");
+        conditionList.add("3");
+        conditionList.add("4");
+        conditionList.add("5");
+        conditionList.add("6");
+        conditionList.add("7");
+        conditionList.add("8");
     }
 
     public String getWeatherData(Location location) {
