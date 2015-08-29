@@ -1,18 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
-    <TextView
+    <!-- Relative layout -->
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:background="#ffffff"
+            >
+
+        <TextView android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:gravity="center"
+                  android:text="Hello World, \nHolometer"
+                  android:textSize="80px"
+                  android:id="@+id/text1"
+                  android:textColor="#000000"
+                />
+
+        <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--&lt;!&ndash;android:src="@drawable/your_image"&ndash;&gt;-->
+                <!--android:adjustViewBounds="true"-->
+                <!--/>-->
+    </RelativeLayout>
+
+    <View
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World, Holometer"
+            android:layout_height="0dp"
+            android:layout_weight="0"
+            android:background="#ffffff"
             />
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World, Holometer"
-            />
-</GridLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:background="#ffffff"
+        >
+
+        <TextView android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:gravity="center"
+                  android:rotationX="180"
+                  android:text="Hello World, \nHolometer"
+                  android:textSize="80px"
+                  android:id="@+id/text1"
+                  android:textColor="#000000"
+                />
+
+
+    </RelativeLayout>
+</LinearLayout>
 
