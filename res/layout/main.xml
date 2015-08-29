@@ -105,7 +105,9 @@
                         android:paddingTop="2sp"
                         android:text="30"
                         android:textSize="16pt"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:id="@+id/tempFront"
+                        />
             </LinearLayout>
 
         </LinearLayout>
@@ -151,7 +153,8 @@
                         android:text="30"
                         android:textSize="16pt"
                         android:rotationX="180"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:id="@+id/tempBack"/>
 
                 <ImageView
                         android:layout_width="64dp"

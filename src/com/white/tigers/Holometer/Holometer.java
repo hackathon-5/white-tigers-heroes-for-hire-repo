@@ -11,8 +11,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-public class Holometer extends Activity {
+public class Holometer extends Activity implements RetrieveWeatherDataCallback {
     /**
      * Called when the activity is first created.
      */
@@ -94,15 +95,28 @@ public class Holometer extends Activity {
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
-        if(networkInfo != null && networkInfo.isConnected()) {
-            weatherService.getWeatherData(location);
-            Log.i("tag", currentWeather.getDescription());
-//            TextView test = (TextView) findViewById(R.id.test);
-//            test.setText(currentWeather.getDescription());
+        if(networkInfo != null && networkInfo.isConnected())
+        {
+            new RetrieveWeatherDataTask(this, getApplicationContext()).execute(location);
         }
         else
         {
             Log.i("tag", "NOT CONNECTED");
         }
+    }
+
+    @Override
+    public void onWeatherRetrieved(Weather weather) {
+        currentWeather = weather;
+        TextView tempFront = (TextView)findViewById(R.id.tempFront);
+        TextView tempBack = (TextView)findViewById(R.id.tempBack);
+
+        tempFront.setText(String.valueOf(convertKelvinToFarenheit(currentWeather.getTemp())));
+        tempBack.setText(String.valueOf(convertKelvinToFarenheit(currentWeather.getTemp())));
+    }
+
+    private int convertKelvinToFarenheit(float kelvin)
+    {
+        return Math.round((((kelvin - 273.15f) * 1.8f) + 32));
     }
 }
