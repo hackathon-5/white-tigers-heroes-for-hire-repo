@@ -95,8 +95,8 @@ public class Holometer extends Activity {
         if(networkInfo != null && networkInfo.isConnected()) {
             currentWeather = weatherService.getWeather(location);
             Log.i("tag", currentWeather.getDescription());
-            TextView test = (TextView) findViewById(R.id.test);
-            test.setText(currentWeather.getDescription());
+//            TextView test = (TextView) findViewById(R.id.test);
+//            test.setText(currentWeather.getDescription());
         }
         else
         {

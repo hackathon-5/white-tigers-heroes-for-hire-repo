@@ -20,8 +20,7 @@
                 android:textColor="#ffffff"
                 android:layout_weight="1"
                 android:rotation="270"
-                android:rotationX="180"
-                />
+                android:rotationX="180"/>
 
         <TextView
                 android:layout_width="0dp"
@@ -31,8 +30,8 @@
                 android:textSize="20sp"
                 android:textColor="#ffffff"
                 android:layout_weight="1"
-                android:rotation="90"
-                />
+                android:rotation="90"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -67,32 +66,18 @@
                 android:orientation="horizontal">
 
             <LinearLayout
-                    android:layout_width="100sp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="75sp"
+                    android:layout_marginLeft="85sp"
                     android:layout_gravity="bottom"
-                    android:layout_marginBottom="50sp"
                     android:orientation="vertical">
-
-                <TextView
-                        android:layout_width="100sp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/Speed"
-                        android:gravity="right"
-                        android:textSize="40sp"
-                        android:textColor="#ffffff"
-                        android:id="@+id/test"/>
 
                 <ImageView
                         android:layout_width="80sp"
                         android:layout_height="wrap_content"
-                        android:text="@string/Speed"
-                        android:gravity="right"
-                        android:textSize="40sp"
+                        android:gravity="right|bottom"
                         android:src="@drawable/fast25"
-                        android:textColor="#ffffff"
-                        android:id="@+id/topSpeedLimit"
-                        />
+                        android:id="@+id/topSpeedLimit"/>
 
             </LinearLayout>
 
@@ -101,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15sp"
                     android:layout_gravity="bottom"
-                    android:layout_marginBottom="50sp"
+                    android:layout_marginBottom="70sp"
                     android:orientation="vertical">
 
                 <ImageView
@@ -116,12 +101,15 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Julian"
+                        android:paddingTop="2sp"
+                        android:text="30"
+                        android:textSize="16pt"
                         android:layout_gravity="center"/>
             </LinearLayout>
 
         </LinearLayout>
 
+        <!-- Inverted Layout -->
         <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -130,47 +118,50 @@
                 android:orientation="horizontal">
 
             <LinearLayout
-                    android:layout_width="100sp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="75sp"
+                    android:layout_marginLeft="85sp"
                     android:layout_gravity="top"
-                    android:layout_marginTop="50sp"
                     android:orientation="vertical">
-
-                <TextView
-                        android:layout_width="100sp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/Unit"
-                        android:gravity="right"
-                        android:textSize="12sp"
-                        android:textColor="#ffffff"
-                        android:rotationX="180"/>
 
                 <ImageView
                         android:layout_width="80sp"
                         android:layout_height="wrap_content"
-                        android:text="@string/Speed"
-                        android:gravity="right"
-                        android:textSize="40sp"
-                        android:textColor="#ffffff"
+                        android:gravity="right|top"
+                        android:src="@drawable/fast25"
                         android:rotationX="180"
-                        android:id="@+id/bottomSpeedLimit"
-                        />
-
+                        android:id="@+id/bottomSpeedLimit"/>
 
             </LinearLayout>
 
-            <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:paddingLeft="20sp"
-                    android:src="@drawable/rain_white"
-                    android:adjustViewBounds="true"
-                    android:id="@+id/bottomWeather"
+            <LinearLayout
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
                     android:layout_gravity="top"
-                    android:layout_marginTop="50sp"
-                    android:contentDescription="@string/weather_description"
-                    android:rotationX="180"/>
+                    android:layout_marginTop="70sp"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="2sp"
+                        android:text="30"
+                        android:textSize="16pt"
+                        android:rotationX="180"
+                        android:layout_gravity="center"/>
+
+                <ImageView
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/rain_white"
+                        android:adjustViewBounds="true"
+                        android:id="@+id/bottomWeather"
+                        android:layout_gravity="top|center"
+                        android:rotationX="180"
+                        android:contentDescription="@string/weather_description"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
