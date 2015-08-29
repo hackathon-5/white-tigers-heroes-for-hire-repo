@@ -7,6 +7,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Holometer extends Activity {
@@ -24,6 +25,12 @@ public class Holometer extends Activity {
         setContentView(R.layout.main);
 
         weatherService = new WeatherService(getApplicationContext());
+
+        // Set Weather
+        setWeather(R.drawable.rain_white);
+
+        setSpeedLimit(R.drawable.fast65);
+
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
@@ -50,6 +57,33 @@ public class Holometer extends Activity {
 
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
     }
+
+    /**
+     * Set speed limit.
+     * @param speedLimit
+     */
+    private void setSpeedLimit(int speedLimit) {
+        ImageView topSpeed = (ImageView) findViewById(R.id.topSpeedLimit);
+        ImageView bottomSpeed = (ImageView) findViewById(R.id.bottomSpeedLimit);
+
+        topSpeed.setImageResource(speedLimit);
+        bottomSpeed.setImageResource(speedLimit);
+    }
+
+
+    /**
+     * Set Weather
+     *
+     * @param weather
+     */
+    private void setWeather(int weather) {
+        ImageView topWeather = (ImageView) findViewById(R.id.topWeather);
+        ImageView bottomWeather = (ImageView) findViewById(R.id.bottomWeather);
+
+        topWeather.setImageResource(weather);
+        bottomWeather.setImageResource(weather);
+    }
+
 
     private void updateLocation(Location location)
     {
