@@ -9,8 +9,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class Holometer extends Activity {
     /**
@@ -32,6 +32,8 @@ public class Holometer extends Activity {
         setWeather(R.drawable.rain_white);
 
         setSpeedLimit(R.drawable.fast65);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -93,7 +95,7 @@ public class Holometer extends Activity {
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
         if(networkInfo != null && networkInfo.isConnected()) {
-            currentWeather = weatherService.getWeather(location);
+            weatherService.getWeatherData(location);
             Log.i("tag", currentWeather.getDescription());
 //            TextView test = (TextView) findViewById(R.id.test);
 //            test.setText(currentWeather.getDescription());

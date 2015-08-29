@@ -19,48 +19,25 @@ import java.util.Locale;
 /**
  * Created by jamesflesher on 8/29/15.
  */
-public class WeatherService
+public class WeatherService implements RetrieveWeatherDataCallback
 {
     private Context context;
     private static final String SERVICE_URL = "http://api.openweathermap.org/data/2.5/weather?q=%s";
     private static String IMG_URL = "http://openweathermap.org/img/w/";
+    private Weather weather = null;
+    private RetrieveWeatherDataCallback retrieveWeatherDataCallback;
 
     public WeatherService(Context context)
     {
         this.context = context;
     }
 
-    public Weather getWeather(Location location)
+    public Weather getWeather() { return weather; }
+
+    public void getWeatherData(Location location)
     {
-        Weather weather = new Weather();
-
-        String weatherData = getWeatherData(location);
-        if(weatherData != null)
-        {
-            try
-            {
-                JSONObject jsonWeatherObject = new JSONObject(weatherData);
-
-                JSONObject weatherObj = getObject("weather", jsonWeatherObject);
-                weather.setDescription(getString("description", weatherObj));
-
-                JSONObject mainObj = getObject("main", jsonWeatherObject);
-
-                weather.setTemp(getFloat("temp", mainObj));
-                weather.setHumidity(getFloat("humidity", mainObj));
-                weather.setPressure(getFloat("pressure", mainObj));
-                weather.setMinTemp(getFloat("temp_min", mainObj));
-                weather.setMaxTemp(getFloat("temp_max", mainObj));
-
-            }
-            catch(JSONException je)
-            {
-
-            }
-
-        }
-
-        return weather;
+        String cityAndCountry = this.getCityAndCountry(location);
+        new RetrieveWeatherDataTask(this).execute(cityAndCountry);
     }
 
     private JSONObject getObject(String tagName, JSONObject jsonObject) throws JSONException
@@ -83,57 +60,6 @@ public class WeatherService
         return jsonObject.getInt(tagName);
     }
 
-    private String getWeatherData(Location location)
-    {
-        String weatherData = null;
-        HttpURLConnection connection = null;
-        InputStream is = null;
-
-        try
-        {
-            String cityAndCountry = this.getCityAndCountry(location);
-            connection = (HttpURLConnection)(new URL(String.format(SERVICE_URL, cityAndCountry))).openConnection();
-            connection.setRequestMethod("GET");
-            connection.setDoInput(true);
-            connection.setDoOutput(true);
-
-            StringBuffer buffer = new StringBuffer();
-            is = connection.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            String line = null;
-
-            while((line = reader.readLine()) != null)
-            {
-                buffer.append(line + "\r\n");
-            }
-
-            weatherData =  buffer.toString();
-        }
-        catch(Exception ex)
-        {
-            Log.i("test", ex.getMessage());
-            /*
-             * DO NOTHING
-             */
-        }
-        finally
-        {
-            try
-            {
-                is.close();
-                connection.disconnect();
-            }
-            catch(Throwable t)
-            {
-                Log.i("test", t.getMessage());
-                /*
-                 * DO NOTHING
-                 */
-            }
-        }
-
-        return weatherData;
-    }
     private String getCityAndCountry(Location location)
     {
         String cityAndCountry = "";
@@ -155,8 +81,98 @@ public class WeatherService
         return cityAndCountry;
     }
 
-//    public byte[] getImage(String code)
-//    {
-//
-//    }
+    @Override
+    public void onWeatherRetrieved(Weather weather) {
+        weather = weather;
+    }
+
+    private class RetrieveWeatherDataTask extends com.white.tigers.Holometer.RetrieveWeatherDataTask {
+        RetrieveWeatherDataCallback callback;
+
+        public RetrieveWeatherDataTask(RetrieveWeatherDataCallback callback)
+        {
+            this.callback = callback;
+        }
+
+        @Override
+        protected Object doInBackground(Object[] params)
+        {
+            String weatherData = null;
+            HttpURLConnection connection = null;
+            InputStream is = null;
+
+            try
+            {
+                connection = (HttpURLConnection) (new URL(String.format(SERVICE_URL, (String) params[0]))).openConnection();
+                connection.setRequestMethod("GET");
+                connection.setDoInput(true);
+                connection.setDoOutput(true);
+
+                StringBuffer buffer = new StringBuffer();
+                is = connection.getInputStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+                String line = null;
+
+                while ((line = reader.readLine()) != null)
+                {
+                    buffer.append(line + "\r\n");
+                }
+
+                weatherData = buffer.toString();
+            }
+            catch(Exception ex)
+            {
+                Log.i("test", ex.getMessage());
+                /*
+                 * DO NOTHING
+                 */
+            }
+            finally
+            {
+                try
+                {
+                    is.close();
+                    connection.disconnect();
+                }
+                catch(Throwable t)
+                {
+                    Log.i("test", t.getMessage());
+                    /*
+                     * DO NOTHING
+                     */
+                }
+            }
+
+            return weatherData;
+        }
+
+        protected void onPostExecute(String weatherData)
+        {
+            if(weatherData != null)
+            {
+                try
+                {
+                    weather = new Weather();
+                    JSONObject jsonWeatherObject = new JSONObject(weatherData);
+
+                    JSONObject weatherObj = getObject("weather", jsonWeatherObject);
+                    weather.setDescription(getString("description", weatherObj));
+
+                    JSONObject mainObj = getObject("main", jsonWeatherObject);
+
+                    weather.setTemp(getFloat("temp", mainObj));
+                    weather.setHumidity(getFloat("humidity", mainObj));
+                    weather.setPressure(getFloat("pressure", mainObj));
+                    weather.setMinTemp(getFloat("temp_min", mainObj));
+                    weather.setMaxTemp(getFloat("temp_max", mainObj));
+
+                    callback.onWeatherRetrieved(weather);
+                }
+                catch(JSONException je)
+                {
+
+                }
+            }
+        }
+    }
 }

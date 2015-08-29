@@ -69,6 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="85sp"
+                    android:layout_marginBottom="45sp"
                     android:layout_gravity="bottom"
                     android:orientation="vertical">
 
@@ -86,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15sp"
                     android:layout_gravity="bottom"
-                    android:layout_marginBottom="70sp"
+                    android:layout_marginBottom="100sp"
                     android:orientation="vertical">
 
                 <ImageView
@@ -121,6 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="85sp"
+                    android:layout_marginTop="45sp"
                     android:layout_gravity="top"
                     android:orientation="vertical">
 
@@ -139,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15sp"
                     android:layout_gravity="top"
-                    android:layout_marginTop="70sp"
+                    android:layout_marginTop="100sp"
                     android:orientation="vertical">
 
                 <TextView
