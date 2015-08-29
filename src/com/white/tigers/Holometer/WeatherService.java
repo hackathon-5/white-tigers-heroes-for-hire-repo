@@ -141,7 +141,7 @@ public class WeatherService {
 //            }
 
             Random random = new Random();
-            int conditionIndex =  random.nextInt(conditionList.size());
+            int conditionIndex =  random.nextInt(conditionList.size() - 1);
             weather.setCondition(conditionList.get(conditionIndex));
 
             JSONObject mainObj = getObject("main", jsonWeatherObject);

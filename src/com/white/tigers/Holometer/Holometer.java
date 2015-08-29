@@ -87,7 +87,7 @@ public class Holometer extends Activity implements RetrieveWeatherDataCallback, 
             }
         };
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, locationListener);
     }
 
     /**
@@ -149,7 +149,7 @@ public class Holometer extends Activity implements RetrieveWeatherDataCallback, 
         ImageView bottomWeather = (ImageView) findViewById(R.id.bottomWeather);
 
         topWeather.setImageBitmap(decodeResource(getResources(), weatherIcons.get(Integer.valueOf(weather.getCondition()))));
-        bottomWeather.setImageBitmap(decodeResource(getResources(), speedLimits.get(Integer.valueOf(weather.getCondition()))));
+        bottomWeather.setImageBitmap(decodeResource(getResources(), weatherIcons.get(Integer.valueOf(weather.getCondition()))));
 
     }
 
