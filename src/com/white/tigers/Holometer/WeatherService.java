@@ -4,6 +4,7 @@ import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -110,6 +111,7 @@ public class WeatherService
         }
         catch(Exception ex)
         {
+            Log.i("test", ex.getMessage());
             /*
              * DO NOTHING
              */
@@ -123,6 +125,7 @@ public class WeatherService
             }
             catch(Throwable t)
             {
+                Log.i("test", t.getMessage());
                 /*
                  * DO NOTHING
                  */
@@ -139,7 +142,7 @@ public class WeatherService
             Geocoder geocoder = new Geocoder(context, Locale.getDefault());
             List<Address> addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
             if (addressList.size() > 0) {
-                cityAndCountry = addressList.get(0).getLocality() + addressList.get(0).getCountryCode();
+                cityAndCountry = String.format("%s,%s", addressList.get(0).getLocality(), addressList.get(0).getCountryCode());
             }
         }
         catch(Exception ex)

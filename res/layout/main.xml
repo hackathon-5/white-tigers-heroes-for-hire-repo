@@ -80,7 +80,8 @@
                         android:text="@string/Speed"
                         android:gravity="right"
                         android:textSize="40sp"
-                        android:textColor="#ffffff"/>
+                        android:textColor="#ffffff"
+                        android:id="@+id/test"/>
 
                 <TextView
                         android:layout_width="100sp"
